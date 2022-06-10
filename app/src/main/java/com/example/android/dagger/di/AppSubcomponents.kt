@@ -18,6 +18,7 @@ package com.example.android.dagger.di
 
 import com.example.android.dagger.user.UserComponent
 import dagger.Module
+import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
@@ -28,4 +29,10 @@ import dagger.hilt.components.SingletonComponent
         UserComponent::class
     ]
 )
-class AppSubcomponents
+interface AppSubcomponents: TestInterface
+
+@InstallIn(SingletonComponent::class)
+@EntryPoint
+interface TestInterface {
+    fun createUserComponent(testModule: TestModule): TestComponent
+}

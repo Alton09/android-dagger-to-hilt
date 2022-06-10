@@ -17,8 +17,14 @@
 package com.example.android.dagger
 
 import android.app.Application
+import com.example.android.dagger.di.TestInterface
+import dagger.hilt.EntryPoints
+import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-open class MyApplication : Application()
+open class MyApplication : Application() {
+
+    fun component() = EntryPoints.get(this, TestInterface::class.java)
+}
 
